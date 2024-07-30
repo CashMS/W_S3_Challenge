@@ -178,6 +178,19 @@
       // 🌟 HINT: remember about the `slice` method which strings and arrays have
       // ❗ Feel free to implement `back`, although this is not required nor graded
 
+      constructor (str, num) {
+        this.str = str;
+        this.num = num;
+        this.index = 0;
+      }
+      next () {
+          if (this.index >= this.str.length) {
+          return null
+        } 
+        const page = this.str.slice(this.index, this.index + this.num);
+        this.index += this.num;
+        return page
+      }
     }
 
     // 👉 CHALLENGE 4 AntFarm
