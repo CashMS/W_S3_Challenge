@@ -59,6 +59,59 @@
       // ❗ WARNING: except for `getAllReversed`, methods must respect the order of the integers
       // ❗ WARNING: note that except for push and pop, the methods don't change the `ints` property
 
+      constructor(...ints) {
+        this.ints = ints;
+        let instances = [ints];
+      }
+      getAll () {
+        return this.ints;
+      }
+      getEvens () {
+        const evens = []
+        for (let i = 0; i < this.ints.length; i++) {
+        if (this.ints[i] % 2 === 0) {
+          evens.push(this.ints[i]);
+        }
+        }
+        return evens;
+      }
+      getNegatives () {
+        const neg = []
+        for (let i = 0; i < this.ints.length; i++) {
+        if (this.ints[i] < 0) {
+          neg.push(this.ints[i])
+        }
+        }
+        return neg
+      }
+      getAllSquared () {
+        const sq = [];
+        for (let i = 0; i < this.ints.length; i++) {
+          if (this.ints[i] >= 0) {
+            sq.push(this.ints[i] ** 2);
+          }
+        }
+        return sq;
+      }
+      pop () {
+        return this.ints.pop()
+      }
+      push (x) {
+        this.ints.push(x)
+        return this.ints;
+      }
+      getEveryNth (n) {
+        const nth = [];
+        for (let i = 0; i < this.ints.length; i++) {
+          if (i % n === 0) {
+            nth.push(this.ints[i]);
+          }
+        }
+        return nth;
+      }
+      getAllReversed () {
+        return this.ints.reverse()
+      }
     }
 
     // 👉 CHALLENGE 2 NerfGun
