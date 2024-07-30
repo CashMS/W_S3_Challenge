@@ -129,7 +129,36 @@
       //      * When engaging the safety, return "Safety enabled!"
       //      * When disengaging the safety, return "Safety disabled!"
       // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
-
+        constructor (maxProj) {
+          this.maxProj = maxProj;
+          this.proj = maxProj;
+          this.safety = true
+        }
+        shoot () {
+          if (this.proj > 0 && this.safety === false) {
+            this.proj--;
+            return "Bang!";
+          } else {
+            return "Click!";
+          }
+        }
+        reload (bull) {
+          if (typeof bull !== 'number' || bull <= 0) {
+            return "Error reloading!";
+          } 
+          const newProj = this.proj + bull;
+          if (newProj > this.maxProj) {
+            this.proj = this.maxProj;
+          } else {
+            this.proj += bull;
+          }
+          return `${this.proj} projectiles left!`;
+        }
+        toggleSafety () {
+          this.safety = !this.safety;
+          return this.safety ? "Safety enabled!": "Safety disabled!"
+        }
+        
     }
 
     // 👉 CHALLENGE 3 EBook
