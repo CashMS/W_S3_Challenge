@@ -234,17 +234,38 @@
           }));
         }
         work () {
+          if (this.ants.length === 0) {
+            return "No ants here. Did you work them to death?"
+          }
+
+          const count = this.ants.length;
           this.ants.forEach(ant => {
             ant.health -= 20;
           });
+
           this.ants = this.ants.filter(ant => ant.health > 0);
-          if (this.ants.length === 0) {
-            return "No ants here. Did you work them to death?";
-          }
-          return `${this.ants.length} ants starting work!`;
+          return `${count} ants starting work!`;
+        }
+        
+        feed (names) {
+          let found = false;
+          this.ants.forEach(ant => {
+            if (ant.name === names) {
+              ant.health += 15;
+              found = true
+            }
+          });
+          return found ? "Yum!" : `${names} not found!`
         }
     }
 
+    // Instances of AntFarm have a `feed` method:
+      //      * The method takes as its only argument the name of the particular ant(s) to feed
+      //      * When invoked, the ant(s) by the given name obtain a health increase of 15 points
+      //      * The method returns the string "Yum!" if any ants by the given name exist
+      //      * The method returns the string "<ant name> not found!" if no ants by the given name exist
+
+    
     // 🧪 TESTS, do not make any changes below this line ===================
     // 🧪 TESTS, do not make any changes below this line ===================
     // 🧪 TESTS, do not make any changes below this line ===================
